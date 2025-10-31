@@ -15,6 +15,7 @@ namespace Models
         {
             
         }
+        public DbSet<technova_ecom.Views.Models.Entities.Customer> Customer { get; set; } = default!;
        
     }
 }
