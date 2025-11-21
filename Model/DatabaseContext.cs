@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Entities;
+using technova_ecom.Model.Entities;
 
 namespace Model
 {
@@ -16,6 +17,7 @@ namespace Model
 
         public DbSet<Customer> customers{ get; set; }
         public DbSet<Product> products { get; set; }
+        public DbSet<Category> categories { get; set; }
        
     }
 }

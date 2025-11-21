@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model;
 
@@ -10,9 +11,11 @@ using Model;
 namespace technova_ecom.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20251121041242_altertingCategory")]
+    partial class altertingCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,10 +71,6 @@ namespace technova_ecom.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("productId"));
 
-                    b.Property<int>("categoryId")
-                        .HasColumnType("int")
-                        .HasColumnName("category_id");
-
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("description");
@@ -94,8 +93,6 @@ namespace technova_ecom.Migrations
 
                     b.HasKey("productId");
 
-                    b.HasIndex("categoryId");
-
                     b.ToTable("Product");
                 });
 
@@ -103,40 +100,21 @@ namespace technova_ecom.Migrations
                 {
                     b.Property<int>("categoryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+                        .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("categoryId"));
 
                     b.Property<string>("categoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("name");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("displayorder")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("displayOrder");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("categoryId");
 
                     b.ToTable("categories");
-                });
-
-            modelBuilder.Entity("Model.Entities.Product", b =>
-                {
-                    b.HasOne("technova_ecom.Model.Entities.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("categoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("technova_ecom.Model.Entities.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

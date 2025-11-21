@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using technova_ecom.Model.Entities;
 
 namespace Model.Entities
 {
@@ -38,5 +39,14 @@ namespace Model.Entities
         [Column("rating")]
         [Display(Name = "rating")]
         public string? rating { get; set; }
+
+        // foregin key 
+        [Column ("category_id")]
+        public int categoryId { get; set; }
+
+        //navigation key
+        [ForeignKey("categoryId")]
+
+        public Category category { get; set; }
     }
 }
