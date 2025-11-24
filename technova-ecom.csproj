@@ -8,17 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Products1\**" />
-    <Content Remove="Views\Products1\**" />
-    <EmbeddedResource Remove="Views\Products1\**" />
-    <None Remove="Views\Products1\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Controllers\Products1Controller.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.20">

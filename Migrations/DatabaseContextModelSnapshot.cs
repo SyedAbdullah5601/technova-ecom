@@ -104,19 +104,19 @@ namespace technova_ecom.Migrations
                     b.Property<int>("categoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("categoryId");
+                        .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("categoryId"));
 
                     b.Property<string>("categoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("categoryName");
+                        .HasColumnName("name");
 
                     b.Property<string>("displayorder")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("displayorder");
+                        .HasColumnName("displayOrder");
 
                     b.HasKey("categoryId");
 
@@ -125,13 +125,13 @@ namespace technova_ecom.Migrations
 
             modelBuilder.Entity("Model.Entities.Product", b =>
                 {
-                    b.HasOne("technova_ecom.Model.Entities.Category", "category")
+                    b.HasOne("technova_ecom.Model.Entities.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("categoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("category");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("technova_ecom.Model.Entities.Category", b =>
